@@ -13,7 +13,7 @@ const Register = () => {
       await authService.register(username, password, email, roleId);
       alert('Registration successful!');
     } catch (error) {
-      alert('Error registering user');
+      alert(`Error registering user: ${error.response.data.message}`);
     }
   };
 
