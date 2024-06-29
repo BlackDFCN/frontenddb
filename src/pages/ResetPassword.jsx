@@ -4,27 +4,26 @@ import authService from '../services/authService';
 const ResetPassword = () => {
   const [email, setEmail] = useState('');
 
-  const handleResetPassword = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await authService.resetPassword(email);
-      alert('Password reset email sent!');
-    } catch (error) {
-      alert('Error sending reset email');
+      alert('Password reset email sent');
+    } catch (err) {
+      console.error('Error resetting password', err);
+      alert('Failed to reset password');
     }
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <h2>Reset Password</h2>
-      <form onSubmit={handleResetPassword}>
-        <div>
-          <label>Email</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </div>
-        <button type="submit">Send Reset Email</button>
-      </form>
-    </div>
+      <label>
+        Email:
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+      </label>
+      <button type="submit">Reset Password</button>
+    </form>
   );
 };
 

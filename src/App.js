@@ -1,21 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Register from './pages/Register';
-import Login from './pages/Login';
-import ResetPassword from './pages/ResetPassword';
-import SetNewPassword from './pages/SetNewPassword';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Routes from './routes';
 
-const App = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/set-new-password" element={<SetNewPassword />} />
-      </Routes>
-    </Router>
-  );
-};
+const App = () => (
+  <Router>
+    <div>
+      <Navbar />
+      <Routes />
+    </div>
+  </Router>
+);
 
 export default App;

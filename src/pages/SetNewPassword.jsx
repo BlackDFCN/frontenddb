@@ -1,32 +1,29 @@
 import React, { useState } from 'react';
 import authService from '../services/authService';
 
-const SetNewPassword = ({ location }) => {
+const SetNewPassword = ({ match }) => {
   const [newPassword, setNewPassword] = useState('');
-  const query = new URLSearchParams(location.search);
-  const token = query.get('token');
 
-  const handleSetNewPassword = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await authService.setNewPassword(token, newPassword);
-      alert('Password updated successfully!');
-    } catch (error) {
-      alert('Error updating password');
+      await authService.setNewPassword(match.params.token, newPassword);
+      alert('Password updated successfully');
+    } catch (err) {
+      console.error('Error setting new password', err);
+      alert('Failed to set new password');
     }
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <h2>Set New Password</h2>
-      <form onSubmit={handleSetNewPassword}>
-        <div>
-          <label>New Password</label>
-          <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
-        </div>
-        <button type="submit">Set New Password</button>
-      </form>
-    </div>
+      <label>
+        New Password:
+        <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
+      </label>
+      <button type="submit">Set New Password</button>
+    </form>
   );
 };
 
