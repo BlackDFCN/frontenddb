@@ -41,6 +41,8 @@ function App() {
           <Route path="/reservations" element={<Reservations />} />
           <Route path="/reports" element={<Reports />} />
 
+
+
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/reservations" element={<AdminReservations />} />
           <Route path="/admin/tables" element={<AdminTables />} />
