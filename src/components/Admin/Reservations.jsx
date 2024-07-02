@@ -6,7 +6,7 @@ const AdminReservations = () => {
 
     useEffect(() => {
         // Fetch reservations from the server
-        axios.get('/api/admin/reservations')
+        axios.get('/api/admin/reservations/')
             .then(response => setReservations(response.data))
             .catch(error => console.error('Error fetching reservations:', error));
     }, []);
