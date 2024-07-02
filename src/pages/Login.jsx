@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/users/login', { username, password });
+      const response = await axios.post('http://localhost:5000/api/auth/login', { username, password });
       if (response.data) {
         // Save user data to local storage or context
-        history.push('/reservations');
+        navigate('/reservations');
       }
     } catch (err) {
       console.error('Error logging in', err);

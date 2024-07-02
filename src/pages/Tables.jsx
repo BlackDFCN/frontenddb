@@ -7,7 +7,7 @@ function Tables() {
   useEffect(() => {
     const fetchTables = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/tables/list');
+        const response = await axios.get('http://localhost:5000/api/tables');
         setTables(response.data);
       } catch (err) {
         console.error('Error fetching tables', err);
@@ -22,7 +22,7 @@ function Tables() {
       <ul>
         {tables.map((table) => (
           <li key={table.table_id}>
-            {table.table_number} - {table.capacity} - {table.status}
+            Table {table.table_number} - Capacity: {table.capacity} - Status: {table.status}
           </li>
         ))}
       </ul>
