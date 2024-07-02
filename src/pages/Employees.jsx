@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Navbar from '../components/Navbar';
+import '../styles/Employees.css';
 
 function Employees() {
   const [employees, setEmployees] = useState([]);
@@ -18,14 +20,30 @@ function Employees() {
 
   return (
     <div>
-      <h1>Employees</h1>
-      <ul>
-        {employees.map((employee) => (
-          <li key={employee.employee_id}>
-            {employee.first_name} {employee.last_name} - {employee.position}
-          </li>
-        ))}
-      </ul>
+      <Navbar />
+      <div className="employees-container">
+        <h1>Empleados</h1>
+        <table className="employees-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Posición</th>
+            </tr>
+          </thead>
+          <tbody>
+            {employees.map((employee) => (
+              <tr key={employee.employee_id}>
+                <td>{employee.employee_id}</td>
+                <td>{employee.first_name}</td>
+                <td>{employee.last_name}</td>
+                <td>{employee.position}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

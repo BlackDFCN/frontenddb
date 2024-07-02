@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Navbar from '../components/Navbar';
+import '../styles/Customers.css';
 
 function Customers() {
   const [customers, setCustomers] = useState([]);
@@ -18,14 +20,28 @@ function Customers() {
 
   return (
     <div>
-      <h1>Customers</h1>
-      <ul>
-        {customers.map((customer) => (
-          <li key={customer.customer_id}>
-            {customer.first_name} {customer.last_name} - {customer.email}
-          </li>
-        ))}
-      </ul>
+       <Navbar />
+    <div className="customers-container">
+      <h1>Clientes</h1>
+      <table className="customers-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {customers.map((customer) => (
+            <tr key={customer.customer_id}>
+              <td>{customer.first_name}</td>
+              <td>{customer.last_name}</td>
+              <td>{customer.email}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
     </div>
   );
 }

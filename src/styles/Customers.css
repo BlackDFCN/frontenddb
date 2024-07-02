@@ -1,0 +1,37 @@
+/* Estilos para la sección de clientes */
+
+.customers-container {
+    padding: 20px;
+  }
+  
+  .customers-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .customers-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  
+  .customers-table th, .customers-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .customers-table th {
+    background-color: #4a90e2;
+    color: white;
+  }
+  
+  .customers-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .customers-table tr:hover {
+    background-color: #ddd;
+  }
+  

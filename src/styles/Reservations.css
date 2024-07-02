@@ -1,0 +1,37 @@
+/* Estilos para la sección de reservaciones */
+
+.reservations-container {
+    padding: 20px;
+  }
+  
+  .reservations-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .reservations-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  
+  .reservations-table th, .reservations-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .reservations-table th {
+    background-color: #4a90e2;
+    color: white;
+  }
+  
+  .reservations-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .reservations-table tr:hover {
+    background-color: #ddd;
+  }
+  

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Navbar from '../components/Navbar';
+import '../styles/Users.css';
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -18,16 +20,29 @@ function Users() {
 
   return (
     <div>
-      <h1>Users</h1>
-      <ul>
-        {users.map((user) => (
-          <li key={user.user_id}>
-            {user.username} - {user.email}
-          </li>
-        ))}
-      </ul>
+      <Navbar />
+    <div className="users-container">
+      <h1>Usuarios</h1>
+      <table className="users-table">
+        <thead>
+          <tr>
+            <th>Nombre de Usuario</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.user_id}>
+              <td>{user.username}</td>
+              <td>{user.email}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
+  </div>
   );
 }
+
 
 export default Users;

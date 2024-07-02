@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Register.css';
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -22,36 +23,33 @@ function Register() {
 
     try {
       await axios.post('http://localhost:5000/api/users/', { username, password, role_id, email });
-      //navigate('/login'); 
+      navigate('/login'); 
     } catch (err) {
       console.error('Error registering', err);
     }
   };
 
   return (
-    <div>
-      <h1>Register</h1>
+    <div className="register-container">
+    <div className="register-box">
+      <h2>Regístrate en EL PERUANOTE</h2>
       <form onSubmit={handleRegister}>
-        <div>
-          <label>Username</label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+        <div className="input-group">
+          <label>Nombre de usuario</label>
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
         </div>
-        <div>
-          <label>Password</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <div className="input-group">
+          <label>Contraseña</label>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
-        <div>
-          <label>Email</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <div className="input-group">
+          <label>Correo electrónico</label>
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
-        <div>
-          <label>Role ID</label>
-          <input type="number" value={role_id} onChange={(e) => setRoleId(parseInt(e.target.value, 10))} />
-        </div>
-        <button type="submit">Register</button>
+        <button type="submit" className="register-button">Registrar</button>
       </form>
     </div>
-  );
+  </div>
+);
 }
-
 export default Register;

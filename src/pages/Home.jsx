@@ -1,9 +1,17 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
+import { Link } from 'react-router-dom';
+import '../styles/Home.css';
 
 function Home() {
   return (
-    <div>
-      <h1>Welcome to Restaurant Reservation System</h1>
+    <div className="home-container">
+      <Navbar />
+      <div className="home-content">
+        <h1>Welcome to EL PERUANOTE</h1>
+        <p>Make your reservation today!</p>
+        <button className="reservation-button">Make a Reservation</button>
+      </div>
     </div>
   );
 }

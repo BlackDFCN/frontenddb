@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Navbar from '../components/Navbar';
+import '../styles/Reports.css';
 
 function Reports() {
   const [dailyReport, setDailyReport] = useState([]);
@@ -34,29 +36,33 @@ function Reports() {
 
   return (
     <div>
-      <h1>Reports</h1>
-      <div>
-        <h2>Daily Report</h2>
-        <input type="date" value={reportDate} onChange={(e) => setReportDate(e.target.value)} />
+      <Navbar />
+    <div className="reports-container">
+      <h1>Reportes</h1>
+      <div className="report-section">
+        <h2>Reporte Diario</h2>
+        <input type="date" value={reportDate} onChange={(e) => setReportDate(e.target.value)} className="date-input" />
         <ul>
           {dailyReport.map((report, index) => (
             <li key={index}>{report}</li>
           ))}
         </ul>
       </div>
-      <div>
-        <h2>Weekly Report</h2>
-        <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} placeholder="Start Date" />
-        <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} placeholder="End Date" />
+      <div className="report-section">
+        <h2>Reporte Semanal</h2>
+        <div>
+          <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="date-input" />
+          <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="date-input" />
+        </div>
         <ul>
           {weeklyReport.map((report, index) => (
             <li key={index}>{report}</li>
           ))}
         </ul>
       </div>
-      <div>
-        <h2>Monthly Report</h2>
-        <input type="month" value={reportMonth} onChange={(e) => setReportMonth(e.target.value)} />
+      <div className="report-section">
+        <h2>Reporte Mensual</h2>
+        <input type="month" value={reportMonth} onChange={(e) => setReportMonth(e.target.value)} className="month-input" />
         <ul>
           {monthlyReport.map((report, index) => (
             <li key={index}>{report}</li>
@@ -64,6 +70,7 @@ function Reports() {
         </ul>
       </div>
     </div>
+  </div>
   );
 }
 

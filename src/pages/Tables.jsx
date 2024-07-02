@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Navbar from '../components/Navbar';
+import '../styles/Tables.css';
 
 function Tables() {
   const [tables, setTables] = useState([]);
@@ -18,15 +20,29 @@ function Tables() {
 
   return (
     <div>
-      <h1>Tables</h1>
-      <ul>
-        {tables.map((table) => (
-          <li key={table.table_id}>
-            Table {table.table_number} - Capacity: {table.capacity} - Status: {table.status}
-          </li>
-        ))}
-      </ul>
+      <Navbar />
+    <div className="tables-container">
+      <h1>Mesas</h1>
+      <table className="tables-table">
+        <thead>
+          <tr>
+            <th>Número de Mesa</th>
+            <th>Capacidad</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tables.map((table) => (
+            <tr key={table.table_id}>
+              <td>{table.table_number}</td>
+              <td>{table.capacity}</td>
+              <td>{table.status}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
+  </div>
   );
 }
 
