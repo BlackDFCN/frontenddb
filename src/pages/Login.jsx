@@ -6,18 +6,25 @@ import '../styles/Login.css';
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError('');  // Limpiar cualquier error previo
     try {
       const response = await axios.post('http://localhost:5000/api/auth/login', { username, password });
-      if (response.data) {
-        // Save user data to local storage or context
+      if (response.data.token) {
+        // Guardar el token JWT en el almacenamiento local
+        localStorage.setItem('authToken', response.data.token);
+        // Redirigir al usuario a la página de reservas
         navigate('/reservations');
+      } else {
+        setError('Error al iniciar sesión. Por favor, inténtelo de nuevo.');
       }
     } catch (err) {
       console.error('Error logging in', err);
+      setError('Credenciales inválidas. Por favor, inténtelo de nuevo.');
     }
   };
 
@@ -25,6 +32,7 @@ function Login() {
     <div className="login-container">
       <div className="login-box">
         <h2>Bienvenido a EL PERUANOTE</h2>
+        {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleLogin}>
           <div className="input-group">
             <label>Usuario</label>
