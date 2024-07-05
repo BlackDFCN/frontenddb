@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './css/AdminEmployees.css'; // Asegúrate de importar el archivo CSS
 
 const AdminUsers = () => {
     const [users, setUsers] = useState([]);
@@ -12,13 +13,31 @@ const AdminUsers = () => {
     }, []);
 
     return (
-        <div>
+        <div className="admin-employees-container">
             <h1>Manage Users</h1>
-            <ul>
-                {users.map(user => (
-                    <li key={user.id}>{user.username}</li>
-                ))}
-            </ul>
+            <table className="employee-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {users.map(user => (
+                        <tr key={user.id}>
+                            <td>{user.id}</td>
+                            <td>{user.username}</td>
+                            <td>{user.email}</td>
+                            <td>
+                                <button className="action-button edit-button">Edit</button>
+                                <button className="action-button delete-button">Delete</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 };
