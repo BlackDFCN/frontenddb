@@ -8,9 +8,11 @@ function Home() {
     <div className="home-container">
       <Navbar />
       <div className="home-content">
-        <h1>Welcome to EL PERUANOTE</h1>
-        <p>Make your reservation today!</p>
-        <button className="reservation-button">Make a Reservation</button>
+        <h1>Bienvenido a EL PERUANOTE</h1>
+        <p>Descubre la auténtica esencia de la cocina peruana en cada bocado.</p>
+        <p>En el Peruanote, te invitamos a embarcarte en un viaje culinario</p>
+        <p>que celebra la riqueza y diversidad de los sabores de Perú.</p>
+        <button className="reservation-button">Reserva tu Mesa</button>
       </div>
     </div>
   );

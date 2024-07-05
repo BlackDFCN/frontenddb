@@ -16,7 +16,12 @@ function Login() {
       const response = await axios.post('http://localhost:5000/api/auth/login', { username, password });
       if (response.data.token) {
         // Guardar el token JWT en el almacenamiento local
-        localStorage.setItem('authToken', response.data.token);
+        const userData = {
+          token: response.data.token,
+          userId: response.data.userId,
+          roleId: response.data.roleId,
+        };
+        localStorage.setItem('user', JSON.stringify(userData));
         // Redirigir al usuario a la página de reservas
         navigate('/reservations');
       } else {
